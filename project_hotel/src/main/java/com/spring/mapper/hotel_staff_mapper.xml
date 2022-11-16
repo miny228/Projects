@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+   <mapper namespace="mapper.hotel.staff">
+	
+	<!-- 직원 상세보기 -->
+	<select id="getContent" parameterType="java.lang.String" resultType="com.hotel.vo.HotelStaffVO">
+		select ACCOUNTLEVEL, sid, pass, sname, ename, teamname, position, birth, gender, email, pnumber, zonecode, addr, joinday 
+    		from HOTEL_STAFF where sid=#{sid}
+	</select>
+	
+	<!-- 직원 검색 -->
+	<select id="getStaffSearch" parameterType="com.hotel.vo.HotelSearchVO" resultType="com.hotel.vo.HotelStaffVO">
+		
+		select rno, ACCOUNTLEVEL, sid, pass, sname, ename, teamname, position, birth, gender, email, pnumber, zonecode, addr, joinday
+			from (select rownum rno, ACCOUNTLEVEL, sid, pass, sname, ename, teamname, position, birth, gender, email, pnumber, zonecode, addr, joinday
+				from (select * from HOTEL_STAFF 	
+        	where sid like '%'||#{keyword}||'%' or sname like '%'||#{keyword}||'%' or ename like '%'||#{keyword}||'%' or teamname like '%'||#{keyword}||'%' 
+        		or position like '%'||#{keyword}||'%' or email like '%'||#{keyword}||'%' or pnumber like '%'||#{keyword}||'%' or joinday like '%'||#{keyword}||'%'
+        	order by joinday desc)
+       		 )
+		where rno between #{start} and #{end}		
+		
+	</select>
+	
+	<!-- 직원 총 카운트 -->
+	<select id="totalCount"  resultType="int">
+		select count(*) from HOTEL_STAFF
+	</select>
+	
+	<!-- 직원관리 리스트 -->
+	<select id="staffList" parameterType="map" resultType="com.hotel.vo.HotelStaffVO">
+		select rno, ACCOUNTLEVEL, sid, pass, sname, ename, teamname, position, birth, gender, email, pnumber, zonecode, addr, joinday
+   			 from (select rownum rno, ACCOUNTLEVEL, sid, pass, sname, ename, teamname, position, birth, gender, email
+      			  	, pnumber, zonecode, addr, to_char(joinday,'yyyy-mm-dd') joinday 
+     		   from (select * from HOTEL_STAFF order by joinday desc))
+		Where rno between #{start} and #{end}
+	</select>
+	
+	<!--  회원가입  -->
+	<insert id="join" parameterType="com.hotel.vo.HotelStaffVO">	  
+    	insert into hotel_staff values(#{accountlevel}, #{sid}, #{pass}, #{sname}, #{ename}, #{teamname}, 
+    		#{position}, #{birth}, #{gender}, #{email}, #{pnumber}, #{zonecode}, #{addr}, sysdate)    
+	</insert>
+   
+   <!-- sid 중복 확인  -->
+   <select id="sidcheck" parameterType="java.lang.String" resultType="int">
+    	select count(sid) from hotel_staff where sid=#{sid}
+   </select>
+   
+  <!--  
+     아이디 중복 리절트타입 int 면 생략가능
+   <select id="idcheck" parameterType="java.lang.String" resultType="int">
+    select count(mid) from hotel_member where mid=#{mid}
+   </select>
+   
+    로그인
+   <select id="login" parameterType="com.hotel.vo.HotelMemberVO" resultType="com.hotel.vo.SessionVO">
+    select count(*) loginresult, mid
+			from hotel_member  where mid=#{mid} and pass=#{pass}
+			group by mid
+   </select>
+
+   비밀번호 찾기 회원조회(아이디,이메일)
+   <select id="memberCheck" parameterType="com.hotel.vo.HotelMemberVO" resultType="int" >
+   select count(*) from hotel_member where mid=#{mid} and hemail=#{hemail}
+   </select>
+    현재비밀번호체크(아이디,비번)
+   <select id="mbrpassCheck" parameterType="com.hotel.vo.HotelMemberVO" resultType="int" >
+		select count(*) from hotel_member where mid = #{mid} and pass = #{pass}
+   </select>
+    회원조회(이름,휴대전화)
+   <select id="nameCheck" parameterType="com.hotel.vo.HotelMemberVO" resultType="int" >
+   select count(*) from hotel_member where hname=#{hname} and pnumber=#{pnumber}
+   </select>
+   
+    아이디찾기(mid보여주기)
+   <select id="findId" parameterType="com.hotel.vo.HotelMemberVO" resultType="com.hotel.vo.HotelMemberVO">
+   select mid,hemail,hname from hotel_member where hname=#{hname} and pnumber=#{pnumber}
+   </select>
+   
+   비밀번호 변경 <email>
+	<update id="updatePw" parameterType="com.hotel.vo.HotelMemberVO" >
+	update hotel_member set pass = #{pass} where mid = #{mid}
+	</update>
+  비밀번호 변경 <마이페이지>
+	<update id="updateMppw" parameterType="com.hotel.vo.HotelMemberVO" >
+	update hotel_member set pass = #{npass} where mid = #{mid} and pass=#{pass}
+	</update>
+	프로필 수정 
+		
+	<update id="memberUpdate" parameterType="com.hotel.vo.HotelMemberVO">
+		update hotel_member set hemail=#{hemail}, pnumber=#{pnumber}
+		 where mid=#{mid}
+	</update> 
+		회원 상세정보 
+		<select id="memberContent" parameterType="java.lang.String"  resultType="com.hotel.vo.HotelMemberVO">
+		select mid, hname,hemail, pnumber, ename  
+				 from hotel_member where mid=#{mid}
+	</select> -->
+   </mapper>
+   
