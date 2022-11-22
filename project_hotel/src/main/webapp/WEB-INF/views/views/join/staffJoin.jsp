@@ -240,8 +240,8 @@ $("#btnJoin").click(()=>{
         <article class="content">
             <div class="joinintro">
                 <h1>회원가입</h1>
-                <p>신라리워즈 멤버쉽 회원만을 위한</p>
-                <p>다양한 혜택과 서비스를 누려보세요.</p>
+                <p>신라리워즈 직원만을 위한</p>
+                <p>다양한 복지과 서비스를 누려보세요.</p>
             </div>
             <div class="join-container">
                 <div class="join-container-inner">
@@ -270,20 +270,20 @@ $("#btnJoin").click(()=>{
                                 <h2>부서명*</h2>
 	                                <select id="teamname" name="teamname">
 												<option value="default">선택</option>
-												<option value="front" title="Front">Front Office</option>
-												<option value="back" title="Back">BacK Office</option>
-												<option value="engineer" title="Engineer">Engineer</option>
-												<option value="hr" title="HR">HR</option>
+												<option value="Front Office" title="Front Office">Front Office</option>
+												<option value="BacK Office" title="BacK Office">BacK Office</option>
+												<option value="Engineer" title="Engineer">Engineer</option>
+												<option value="HR" title="HR">HR</option>
 									</select>
                             </li>
                             <li class="join-input-select">        
                                 <h2>직급*</h2>
                                 	<select id="position" name="position">
 												<option value="default">선택</option>
-												<option value="staff" title="Staff">Staff</option>
-												<option value="manager" title="Manager">Manager</option>
-												<option value="admin" title="Admin">Admin</option>
-												<option value="master" title="Master">Master</option>
+												<option value="Staff"" title="Staff">Staff</option>
+												<option value="Manager" title="Manager">Manager</option>
+												<option value="Admin" title="Admin">Admin</option>
+												<option value="Master" title="Master">Master</option>
 									</select>
                             </li>        
                         </ul>     
@@ -315,15 +315,15 @@ $("#btnJoin").click(()=>{
                                        <h2>성별*</h2>
                                         <select name="gender" id="gender" class="join-input join-input-gender" >
                                             <option value="default">선택</option>
-                                            <option value="m">남자</option>
-                                            <option value="w">여자</option>
+                                            <option value="남자">남자</option>
+                                            <option value="여자">여자</option>
                                         </select>
 
                                         <h2>생년월일*</h2>
                                         <div class="birthinput box">
-                                            <div class="birthinput"><input name="birthyy" id="birthyy" class="join-input-birthday " ><h2>년</h2></div>
-                                            <div class="birthinput"><input name="birthmm" id="birthmm" class="join-input-birthday " ><h2>월</h2></div>
-                                            <div class="birthinput"><input name="birthdd" id="birthdd" class="join-input-birthday " ><h2>일</h2></div>
+                                            <div class="birthinput"><input name="birthyy" id="birthyy" class="join-input-birthday " placeholder="0000" ><h2>년</h2></div>
+                                            <div class="birthinput"><input name="birthmm" id="birthmm" class="join-input-birthday " placeholder="00"><h2>월</h2></div>
+                                            <div class="birthinput"><input name="birthdd" id="birthdd" class="join-input-birthday " placeholder="00"><h2>일</h2></div>
                                         </div>
                                     </li>
                                     <li class="join-input-box">

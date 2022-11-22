@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Shill</title>
+<title>FAQ</title>
 <link rel="stylesheet"  href="http://localhost:9000/hotel/resources/css/am-pagination.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
 <script src="http://localhost:9000/hotel/resources/js/jquery-3.6.0.min.js"></script>
@@ -742,5 +742,9 @@ $(document).ready(function(){
 	<div>
 		<%@ include file="../footer.jsp" %>
 	</div>
+	<script>
+ 	$("[data-nav=service]").css("display","block");
+ 	$("[data-nav=service]").children().eq(3).children().first().css("color","white");
+ 	</script>
 </body>
 </html>

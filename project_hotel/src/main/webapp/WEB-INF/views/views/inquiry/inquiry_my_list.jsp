@@ -122,7 +122,9 @@ background: red;
  top:0; 
  width: 110px;
  font-weight:600;
+ margin-top: 246px;
   }
+  
   
 #listtable { 
 	border-collapse:collapse; 
@@ -234,8 +236,8 @@ position: relative;
 			<div class="account">
 				<div class="headTit">
 					<h3 class="tit">연락처</h3>
-					<img src="http://localhost:9000/hotel/resources/img/inquiry/linewrite.jpg">
-						<img alt="연락처 설명 문구" src="http://localhost:9000/hotel/resources/img/inquiry/contactText01.gif">
+					<div class="content-block"></div>
+					<img alt="연락처 설명 문구" src="http://localhost:9000/hotel/resources/img/inquiry/contactText01.gif">
 				</div>
 				
 				<div>
@@ -259,7 +261,8 @@ position: relative;
 				
 				<!---------- content start ---------->
 				<h3 class="tit1">내문의글</h3>
-				<img id="linewrite" src="http://localhost:9000/hotel/resources/img/inquiry/linewrite.jpg">
+				<a href="inquiry_write.do"><button type="button" id="btnInquiry">문의하기</button></a>
+				<div class="content-block"></div>
 									
 					<table id="listtable" border=1px solid>
 						<tr>
@@ -314,7 +317,7 @@ position: relative;
 						</tr>
 					</table>
 					
-					<a href="inquiry_write.do"><button type="button" id="btnInquiry">문의하기</button></a>
+					
 					<form name="my_list_search" action="inquiry_my_list_search.do" method="post" id="search" >
 						<span id="searchspan">검색어</span>
 						<select class="search_list" name="searchlist" id="searchlist">

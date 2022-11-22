@@ -353,5 +353,9 @@ form[name='replyinquiry'] button { position: absolute; margin-top: 50px; margin-
 
 	<!-- Footer Include -->
 	<%@ include file="../footer.jsp" %>
+	<script>
+ 	$("[data-nav=service]").css("display","block");
+ 	$("[data-nav=service]").children().eq(3).children().first().css("color","white");
+ 	</script>
 </body>
 </html>

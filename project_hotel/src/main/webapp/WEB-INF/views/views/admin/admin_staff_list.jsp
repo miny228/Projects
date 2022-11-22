@@ -286,19 +286,39 @@ position: relative;
 								<th>가입날짜</th>
 							</tr>					
 							
-							<c:forEach var="vo"  items="${list}">
-								<tr>
-									<td>${vo.rno }</td>
-									<td><a href="admin_staff_content.do?sid=${vo.sid }">${vo.sid }</a></td>
-									<td>${vo.sname }</td>
-									<td>${vo.ename }</td>
-									<td>${vo.teamname }</td>
-									<td>${vo.position }</td>
-									<td>${vo.email }</td>
-									<td>${vo.pnumber }</td>
-									<td>${vo.joinday }</td>
-								</tr>			
-							</c:forEach>
+							<c:choose>
+								<c:when test="${listSize == 0 }">
+									<!-- 게시물 없을 때 출력 -->
+									<tr>
+										<td colspan="9" id="no"> 
+											<img width="20%" src="http://localhost:9000/hotel/resources/img/inquiry/question.jpg">
+											<div id="nokeyword"><strong>"${keyword}"</strong>와(과) 일치하는 검색결과가 없습니다. </div>
+											<div id="solution"> 해결방법 : </div>
+											<ul id="solution2">
+												<li>ㆍ모든 단어의 철자가 정확한지 확인하세요.</li>
+												<li>ㆍ다른 검색어를 사용해 보세요.</li>
+												<li>ㆍ키워드 수를 줄여보세요.</li>
+											</ul>
+										</td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach var="vo"  items="${list}">
+										<tr>
+											<td>${vo.rno }</td>
+											<td><a href="admin_staff_content.do?sid=${vo.sid }">${vo.sid }</a></td>
+											<td>${vo.sname }</td>
+											<td>${vo.ename }</td>
+											<td>${vo.teamname }</td>
+											<td>${vo.position }</td>
+											<td>${vo.email }</td>
+											<td>${vo.pnumber }</td>
+											<td>${vo.joinday }</td>
+										</tr>			
+									</c:forEach>														
+								</c:otherwise>
+							</c:choose>
+							
 		
 						<tr>
 							<td colspan="9"><div id="ampaginationsm"></div></td>
